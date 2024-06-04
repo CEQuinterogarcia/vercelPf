@@ -132,6 +132,7 @@ const handlePaymentSuccess = async (req: Request, res: Response) => {
       //res.redirect(`${URL}/success?payment_id=${payment_id}&status=${status}&order_id=${external_reference}`);
       res.send("Pago completado con éxito.");
       
+      res.redirect("http://localhost:5173/Buy");
       //res.redirect(`http://frontend-url/success?payment_id=${payment_id}&status=${status}&order_id=${external_reference}`);
     }
   } catch (error) {
