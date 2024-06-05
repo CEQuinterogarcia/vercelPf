@@ -25,7 +25,7 @@ const client = new MercadoPagoConfig({
 });
 
 const payment = async (req: Request, res: Response) => {
-  res.send(ACCESS);
+ 
   const { userId, products } = req.body;
   console.log(products);
 
