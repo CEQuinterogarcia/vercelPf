@@ -18,11 +18,14 @@ const URL = `${URL_TUNEL}`;
 const ACCESS = `${ACCESS_TOKEN}`;
 //const URL = process.env.URL_TUNEL;
 
+
+//const ACCESS = process.env.ACCESS_TOKEN;
 const client = new MercadoPagoConfig({
   accessToken: ACCESS || "",
 });
 
 const payment = async (req: Request, res: Response) => {
+  res.send(ACCESS);
   const { userId, products } = req.body;
   console.log(products);
 
