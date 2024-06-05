@@ -1,4 +1,4 @@
-//import dotenv from "dotenv";
+import dotenv from "dotenv";
 import { MercadoPagoConfig, Preference } from "mercadopago";
 import { Request, Response } from "express";
 import { Order } from "../../models/Order";
@@ -9,19 +9,22 @@ import { ProductOrder } from "../../models/ProductOrder";
 //import { constants } from 'buffer';
 // import sequelize from '../database';  // Asume que tienes una configuración de sequelize
 
-
+dotenv.config();
 
 const { ACCESS_TOKEN, URL_TUNEL } = process.env;
 
-//dotenv.config();
+if (!ACCESS_TOKEN || !URL_TUNEL) {
+  throw new Error("Faltan variables de entorno");
+}
 const URL = `${URL_TUNEL}`;
-const ACCESS = `${ACCESS_TOKEN}`;
+//const ACCESS = `${ACCESS_TOKEN}`;
+//const ACCESS = "APP_USR-2515718633195465-060221-f2d99fa217fb7d7d2501f99e89392de0-1841454940";
 //const URL = process.env.URL_TUNEL;
 
 
 //const ACCESS = process.env.ACCESS_TOKEN;
 const client = new MercadoPagoConfig({
-  accessToken: ACCESS || "",
+  accessToken: ACCESS_TOKEN || "",
 });
 
 const payment = async (req: Request, res: Response) => {

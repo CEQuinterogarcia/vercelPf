@@ -12,16 +12,7 @@
         "dest": "src/index.ts"
       }
     ],
-    "env": {
-      "PG_URL": "postgres://postuser:oo3s0SfEKfGhvXY1eca7u5K9bBrxOH9p@dpg-cp6d7lgl6cac738j5660-a.oregon-postgres.render.com/electroemporium",
-      "SESSION_SECRET": "12345678",
-      "EMAIL_ELECTROEMPORIUM": "electroemporiumsrl@gmail.com",
-      "PASSWORD_ELECTROEMPORIUM": "qivy zrul hnjy cbvq",
-      "ACCESS_TOKEN": "TEST-2515718633195465-060221-c0a5006a9f26df3cf079edbac1b18220-1841454940",
-      "URL_TUNEL": "https://backelectroemporium.vercel.app",
-      "URL_LOCAL": "http://localhost:3000"         
-      
-    },
+  
     "outputDirectory": "build"
   }
 
