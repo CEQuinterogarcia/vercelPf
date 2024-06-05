@@ -6,6 +6,7 @@ import { Payment } from "../../models/Payment";
 import { Product } from "../../models/Product";
 // import User from '../models/User';
 import { ProductOrder } from "../../models/ProductOrder";
+import { sendEmail } from "../../Email/sendEmail";
 //import { constants } from 'buffer';
 // import sequelize from '../database';  // Asume que tienes una configuración de sequelize
 
@@ -113,8 +114,7 @@ const payment = async (req: Request, res: Response) => {
 };
 
 const handlePaymentSuccess = async (req: Request, res: Response) => {
-  //const external_reference = req.query.external_reference as string;
-  //const {collection_status} = req.query;
+ 
   const { external_reference, status} = req.query;
   console.log(req.query);
   console.log("APROBADO");
@@ -140,12 +140,16 @@ const handlePaymentSuccess = async (req: Request, res: Response) => {
           amount: monto,
           paymentMethod: "Mercadopago",
         } as any);
+        
+        sendEmail(orden.userId, orden.id);
+        res.redirect("https://pf-git-componetesmp-gonzadevelopers-projects.vercel.app/?redirect=Buy/Approved");
+        
+        return
       }
-      //res.redirect(`${URL}/success?payment_id=${payment_id}&status=${status}&order_id=${external_reference}`);
-      //res.send("Pago completado con éxito.");
       
-      res.redirect("https://pf-dun.vercel.app");
-      //res.redirect(`http://frontend-url/success?payment_id=${payment_id}&status=${status}&order_id=${external_reference}`);
+    }else if (status === "rejected"){
+      res.redirect("https://pf-git-componetesmp-gonzadevelopers-projects.vercel.app/?redirect=Buy/Disapproved");
+      return
     }
   } catch (error) {
     console.error(error);

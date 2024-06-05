@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+//import { Request, Response } from 'express';
 //import { sequelize } from '../../config/database';
 import { Order } from '../models/Order';
 import { Product } from '../models/Product'; // Asumiendo que tienes un modelo de Producto
@@ -76,12 +76,13 @@ const getOrderById = async (orderId: number) => {
 };
 
 // Función para enviar el correo
-export const sendEmail = async (req: Request, res: Response) => {
-  const { userId, orderId } = req.query;
+export const sendEmail = async (userId: number, orderId: number) => {
+  //const { userId, orderId } = req.query;
 
   if (!orderId) {
-    return res.status(400).send("orderId es necesario");
+    throw new Error("orderId es necesario");
   }
+
 
   try {
     const order = await getOrderById(Number(orderId));
@@ -133,11 +134,11 @@ export const sendEmail = async (req: Request, res: Response) => {
     };
 
     await transporter.sendMail(mailOptions);
-    res.status(200).send({ message: "Correo enviado exitosamente" });
-    return
+    return { message: "Correo enviado exitosamente" };
+    
   } catch (error) {
     console.error("Error al enviar el correo:", error);
-    res.status(500).send(error);
+    throw new Error("Error al enviar el correo");
   }
   return
 };

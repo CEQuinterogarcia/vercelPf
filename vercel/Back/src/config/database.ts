@@ -10,9 +10,9 @@ import { ProductOrder } from '../models/ProductOrder';
 import { Payment } from '../models/Payment';
 import { Cart } from '../models/Cart';
 import { CartProduct } from '../models/CartProduct';
-//import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 
-//dotenv.config();
+dotenv.config();
 
 const { PG_URL } = process.env;
 

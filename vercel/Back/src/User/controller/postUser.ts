@@ -80,7 +80,7 @@ function handleCreationError(error: any, res: Response): void {
 
 async function sendWelcomeEmail(email: string) { //y toda esta función se agregó, hasta el final del try catch
   const mailOptions = {
-    from: 'pf2024mp@gmail.com',
+    from: 'electroemporiumsrl@gmail.com',
     to: email,
     subject: 'Bienvenido a Electroemporium',
     html: `
@@ -90,7 +90,7 @@ async function sendWelcomeEmail(email: string) { //y toda esta función se agreg
             <tr>
               <td align="center" style="background-color: #172211;">
                 <a href="https://electroemporium.com" target="_blank">
-                  <img src="https://i.ibb.co/j5r7vfp/Whats-App-Image-2024-05-10-at-12-01-24-AM.jpg" alt="Logo Electroemporium" style="display: block; margin: 20px auto;" width="140">
+                <img src="https://i.ibb.co/j5r7vfp/Whats-App-Image-2024-05-10-at-12-01-24-AM.jpg" alt="Logo Electroemporium" style="display: block; margin: 0 auto; border-radius: 70px" width="140">
                 </a>
               </td>
             </tr>
