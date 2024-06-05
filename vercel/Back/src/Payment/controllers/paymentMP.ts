@@ -9,11 +9,17 @@ import { ProductOrder } from "../../models/ProductOrder";
 //import { constants } from 'buffer';
 // import sequelize from '../database';  // Asume que tienes una configuración de sequelize
 
+
+
+const { ACCESS_TOKEN, URL_TUNEL } = process.env;
+
 dotenv.config();
-const URL = process.env.URL_TUNEL;
+const URL = `${URL_TUNEL}`;
+const ACCESS = `${ACCESS_TOKEN}`;
+//const URL = process.env.URL_TUNEL;
 
 const client = new MercadoPagoConfig({
-  accessToken: process.env.ACCESS_TOKEN || "",
+  accessToken: ACCESS || "",
 });
 
 const payment = async (req: Request, res: Response) => {
