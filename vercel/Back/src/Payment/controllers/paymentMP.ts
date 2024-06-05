@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+//import dotenv from "dotenv";
 import { MercadoPagoConfig, Preference } from "mercadopago";
 import { Request, Response } from "express";
 import { Order } from "../../models/Order";
@@ -13,7 +13,7 @@ import { ProductOrder } from "../../models/ProductOrder";
 
 const { ACCESS_TOKEN, URL_TUNEL } = process.env;
 
-dotenv.config();
+//dotenv.config();
 const URL = `${URL_TUNEL}`;
 const ACCESS = `${ACCESS_TOKEN}`;
 //const URL = process.env.URL_TUNEL;
