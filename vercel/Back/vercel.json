@@ -17,7 +17,7 @@
       "SESSION_SECRET": "12345678",
       "EMAIL_ELECTROEMPORIUM": "electroemporiumsrl@gmail.com",
       "PASSWORD_ELECTROEMPORIUM": "qivy zrul hnjy cbvq",
-      "ACCESS_TOKEN": "APP_USR-2515718633195465-060221-f2d99fa217fb7d7d2501f99e89392de0-1841454940",
+      "ACCESS_TOKEN": "TEST-2515718633195465-060221-c0a5006a9f26df3cf079edbac1b18220-1841454940",
       "URL_TUNEL": "https://backelectroemporium.vercel.app",
       "URL_LOCAL": "http://localhost:3000"         
       
