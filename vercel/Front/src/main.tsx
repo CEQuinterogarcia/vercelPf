@@ -12,16 +12,14 @@ import { HashRouter as Router } from 'react-router-dom';
 
 const domain = import.meta.env.VITE_AUTH0_DOMAIN;
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
-//const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
-const grant_type = "authorization_code";
+const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
 const redirectUri = `${window.location.origin}/MiPerfil`;
 const logoutUri = `${window.location.origin}`;
 
 const auth0Config = {
   domain,
   clientId,
-  grant_type,
-  //audience,
+  audience,
   authorizationParams: {
     redirect_uri: redirectUri,
     logout_uri: logoutUri,
@@ -31,7 +29,7 @@ const auth0Config = {
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <React.StrictMode>
-       <Router>
+      <Router>
         <Auth0Provider {...auth0Config}>
           <App />
           <Toaster />
