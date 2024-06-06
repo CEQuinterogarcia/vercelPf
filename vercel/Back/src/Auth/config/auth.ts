@@ -8,6 +8,8 @@ passport.use(new Auth0Strategy({
   clientID: process.env.AUTH0_CLIENT_ID,
   clientSecret: process.env.AUTH0_CLIENT_SECRET,
   callbackURL: process.env.AUTH0_CALLBACK_URL,
+  redirect_uri: process.env.AUTH0_REDIRECCION_URL,
+  scope: 'openid profile'
 }, (accessToken:any, refreshToken:any, _extraParams:any, profile:any, done:any) => {
   profile.accessToken = accessToken;
   profile.refreshToken = refreshToken;
