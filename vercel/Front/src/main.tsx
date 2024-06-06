@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast";
 const domain = import.meta.env.VITE_AUTH0_DOMAIN;
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 //const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
-const redirectUri = `${window.location.origin}/?redirect=MiPerfil`;
+const redirectUri = `${window.location.origin}/MiPerfil`;
 const logoutUri = `${window.location.origin}`;
 
 const auth0Config = {
