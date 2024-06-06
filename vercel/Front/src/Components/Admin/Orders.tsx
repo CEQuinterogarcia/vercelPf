@@ -1,24 +1,31 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../Redux';
-import { getAllOrders } from '../../Redux/Actions/orderActions';
-import { AppDispatch } from '../../Redux/index'; // Asegúrate de importar el tipo AppDispatch
+import { getAllOrders, deleteOrder } from '../../Redux/Actions/orderActions';
+import { AppDispatch } from '../../Redux/index';
 import { Order } from '../../types';
 import { selectAllOrders } from '../../Redux/Selector';
 
 const OrderComponent: React.FC = () => {
-    const dispatch = useDispatch<AppDispatch>(); // Tipo dispatch como AppDispatch
-    const orders = useSelector(selectAllOrders) // Cambia 'orders' a 'order'
+    const dispatch = useDispatch<AppDispatch>();
+    const orders = useSelector(selectAllOrders);
 
-    console.log(orders);
-    
+    useEffect(() => {
+        dispatch(getAllOrders());
+    }, [dispatch]);
+
+    const handleDeleteOrder = (orderId: number) => {
+        if (window.confirm('¿Estás seguro de que quieres eliminar esta orden?')) {
+            dispatch(deleteOrder(orderId));
+        }
+    };
+
     return (
-        <div>
-            <div className="header">
+        <div className="container my-4">
+            <div className="header mb-4">
                 <h1>Orders</h1>
             </div>
-            <table>
-                <thead>
+            <table className="table table-striped table-hover">
+                <thead className="thead-dark">
                     <tr>
                         <th>ID</th>
                         <th>User ID</th>
@@ -28,16 +35,14 @@ const OrderComponent: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {orders.map((order: Order) => ( // Cambia 'orders' a 'order'
+                    {orders.map((order: Order) => (
                         <tr key={order.id}>
                             <td>{order.id}</td>
                             <td>{order.userId}</td>
-                            <td>{new Date(order.orderDate).toLocaleDateString()}</td> {/* Cambia el formato de la fecha */}
+                            <td>{new Date(order.orderDate).toLocaleDateString()}</td>
                             <td>{order.orderStatus}</td>
                             <td>
-                                {/* Aquí puedes agregar botones para editar o eliminar la orden si es necesario */}
-                                <button>Edit</button>
-                                <button>Delete</button>
+                                <button className="btn btn-danger" onClick={() => handleDeleteOrder(order.id)}>Delete</button>
                             </td>
                         </tr>
                     ))}

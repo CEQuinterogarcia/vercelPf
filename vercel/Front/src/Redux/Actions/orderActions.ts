@@ -16,7 +16,7 @@ export const getAllOrders = () => {
     };
 };
 
-export const newStatus = (newstat:object, orderId:number) => {
+export const newStatus = (newstat: object, orderId: number) => {
     return async (dispatch: AppDispatch) => {
         try {
             const res = await axios.put(
@@ -26,6 +26,20 @@ export const newStatus = (newstat:object, orderId:number) => {
             dispatch(setStatus(res.data));
         } catch (error) {
             console.error('Error fetching orders:', error);
+        }
+    };
+};
+
+export const deleteOrder = (orderId: number) => {
+    return async (dispatch: AppDispatch) => {
+        try {
+            await axios.delete(
+                `${import.meta.env.VITE_ENDPOINT}/order/${orderId}`
+            );
+            // Después de borrar, actualizamos la lista de órdenes
+            dispatch(getAllOrders());
+        } catch (error) {
+            console.error('Error deleting order:', error);
         }
     };
 };

@@ -16,11 +16,15 @@ const ordersSlice = createSlice({
         setOrders(state, action: PayloadAction<Order[]>) {
             state.orders = action.payload;
         },
-        setStatus(state, action: PayloadAction<Order>){
+        setStatus(state, action: PayloadAction<Order>) {
             state.orders = state.orders.map(
-              (prod)=> prod.id===action.payload.id ? action.payload : prod
+                (prod) => prod.id === action.payload.id ? action.payload : prod
             )
-          }
+        },
+        // Nuevo caso para borrar una orden
+        deleteOrder(state, action: PayloadAction<number>) {
+            state.orders = state.orders.filter(order => order.id !== action.payload);
+        },
     },
 });
 
