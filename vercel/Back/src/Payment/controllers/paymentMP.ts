@@ -142,13 +142,13 @@ const handlePaymentSuccess = async (req: Request, res: Response) => {
         } as any);
         
         sendEmail(orden.userId, orden.id);
-        res.redirect("https://pf-git-componetesmp-gonzadevelopers-projects.vercel.app/?redirect=Buy/Approved");
+        res.redirect("https://frontelectroemporium.vercel.app//?redirect=Buy/Approved");
         
         return
       }
       
     }else if (status === "rejected"){
-      res.redirect("https://pf-git-componetesmp-gonzadevelopers-projects.vercel.app/?redirect=Buy/Disapproved");
+      res.redirect("https://frontelectroemporium.vercel.app//?redirect=Buy/Disapproved");
       return
     }
   } catch (error) {
