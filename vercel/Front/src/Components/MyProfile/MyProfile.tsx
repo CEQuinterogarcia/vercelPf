@@ -9,6 +9,7 @@ import { FormData } from "../../types";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from "react-router-dom";
 
+
 const MiPerfil: React.FC = () => {
 
   const navigate = useNavigate();
